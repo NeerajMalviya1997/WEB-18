@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frontend</title>
+<style>
+    #parent{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px
+        ;
+    }
+    #parent>div{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    #parent>div>img:last-child{
+        width: 80px;
+    }
+</style>
+</head>
+<body>
+    <div id="parent">
+
+    </div>
+</body>
+</html>
+<script>
+    var inverstorsinfo=JSON.parse(localStorage.getItem("inverstorsdata"))
+    inverstorsinfo.forEach(function(el){
+        var box =document.createElement("div")
+        var investorimg =document.createElement("img")
+        investorimg.setAttribute("src",el.img)
+        var investorname =document.createElement("h1")
+        investorname.innerText =el.name
+        var investorrole =document.createElement("p")
+        investorrole.innerText=el.role
+        var investorlogo =document.createElement("img")
+        investorlogo.setAttribute("src",el.logo)
+
+
+
+
+
+        box.append(investorimg,investorname,investorrole,investorlogo)
+        document.querySelector("#parent").append(box)
+    })
+</script>
