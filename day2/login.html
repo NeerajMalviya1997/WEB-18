@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+       
+       #login{
+           padding: 10px 20px;
+           width: 30%;
+           margin: auto;
+           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+       }
+       input{
+           width: 100%;
+           height: 40px;
+           border-radius: 10px;
+       }
+    </style>
+</head>
+<body>
+    <div> <img src="https://sso.masaischool.com/brand_dark.svg" alt=""></div>
+   
+    <form id="login">
+        <p>Full Name</p>
+        <input type="text" placeholder="Enter Your Full Name" id="name">
+        <br>
+        <p>Email</p>
+        <input type="email" placeholder="Enter Your Email" id="email">
+        <br>
+        <p>Password</p>
+        <input type="password" placeholder="Enter Your password" id="password">
+        <br>
+        <p>
+            by signing up ,i accept masai scholl<a href="https://masaischool.com/terms">Terms of services</a>
+            and acknowledgement <a href="https://masaischool.com/privacy"> privacy policy</a>
+        </p>
+        <input type="submit" id="summit" value="sign up">
+        <p>Already have a acoount?<a href="signin.html">sign in</a></p>
+    </form>
+</body>
+</html>
+<script>
+    var arr =JSON.parse(localStorage.getItem("logindata"))||[]
+    
+    document.querySelector("form").addEventListener("submit",myfunction)
+    function myfunction(){
+        event.preventDefault()
+        var obj={
+            name:login.name.value,
+            email:login.email.value,
+            password:login.password.value
+            
+        }
+        check(obj)
+       
+
+    }
+    function check(obj){ 
+        var data =JSON.parse(localStorage.getItem("logindata"))||null
+        if(obj.name ==""){
+            alert("name is empty")
+        }
+        else if(obj.email==""){
+            alert("email is empty")
+        }
+        else if (obj.password==""){
+            alert("password is empty")
+        }
+       else{
+           if(data ==null){
+            arr.push(obj)
+            localStorage.setItem("logindata",JSON.stringify(arr))
+           }
+           else{
+               data.filter(function(el){
+                   if(el.email == obj.email){
+                       alert("kindly signup")
+                   }
+                   else{
+                       alert("signup succesfully")
+                    arr.push(obj)
+                   localStorage.setItem("logindata",JSON.stringify(arr))
+                   window.location.href="signin.html"
+                   
+                   }
+               })
+           }
+               
+                       
+                 
+        }  
+       
+      
+      
+       
+    }
+       
+       
+       
+
+
+</script>

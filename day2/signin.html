@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+       
+       #login{
+           padding: 10px 20px;
+           width: 30%;
+           margin: auto;
+           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+       }
+       input{
+           width: 100%;
+           height: 40px;
+           border-radius: 10px;
+       }
+       #signin{
+           margin-top: 40px;
+           margin-bottom: 40px;
+       }
+       h1{
+           display: flex;
+           justify-content: center;
+       }
+       
+    </style>
+</head>
+<body>
+    <div> <img src="https://sso.masaischool.com/brand_dark.svg" alt=""></div>
+   
+    <form id="login">
+        <h1>Sign in </h1>
+        <p>Email</p>
+        <input type="email" placeholder="Enter Your Email" id="email">
+        <br>
+        <p>Password</p>
+        <input type="password" placeholder="Enter Your password" id="password">
+        <br>
+        
+        <input type="submit" value="Sign In" id-="signin">
+        <p>Don't have a acoount?<a href="login.html">sign up</a></p>
+    </form>
+</body>
+</html>
+<script>
+    var signup =JSON.parse(localStorage.getItem("logindata"))||[]
+    
+
+    
+   
+   
+    document.querySelector("form").addEventListener("submit",check)
+    function check(){
+        event.preventDefault()
+       var obj ={
+           email:login.email.value,
+           password:login.password.value
+       } 
+       
+       signup.filter(function(el){
+           if(el.password==obj.password && el.email==obj.email){
+               alert("login successfully")
+           }else{
+               alert("something wrong")
+           }
+       })
+    }
+</script>
